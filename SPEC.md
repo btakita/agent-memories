@@ -97,6 +97,46 @@ When instruction-files audits agent-memories:
 4. **No machine-local paths**: Same context invariant as other instruction files
 5. **Unique names**: No duplicate `name` values within a project
 
+## Agentic Contracts
+
+Promises the agent makes when interacting with the memory system.
+
+### When saving memories, the agent promises to:
+
+- Use the correct type (`user`, `feedback`, `project`, `reference`) based on provenance
+- Include **Why** and **How to apply** sections for `feedback` and `project` types
+- Check for duplicates before creating new memories (match on `name` and `description`)
+
+### When reading memories, the agent promises to:
+
+- Verify memory content against current state before acting on it
+- Update stale memories rather than following outdated guidance
+
+### When managing the index, the agent promises to:
+
+- Keep `MEMORY.md` entries under 150 characters
+- Update the index after every write (add, rename, or remove)
+
+## Evals
+
+Evaluation scenarios for verifying agent compliance with this spec.
+
+### frontmatter_validation
+
+Does `validate_memory` catch malformed frontmatter? Test cases: missing `name`, missing `type`, invalid `type` value, empty body, malformed YAML.
+
+### type_classification
+
+Does the agent correctly classify corrections as `feedback` vs `project`? A user saying "don't do X" should produce `feedback`; a user describing a deadline or architectural decision should produce `project`.
+
+### duplicate_detection
+
+Does the agent detect when a memory already exists before creating a new one? Given an existing memory with name `use-agent-doc-init`, writing a new memory about the same lesson should update the existing file, not create a duplicate.
+
+### staleness_detection
+
+Does the agent verify memories against current code before applying outdated guidance? If a memory says "use library X" but the project has since migrated to library Y, the agent should update the memory rather than follow it blindly.
+
 ## Relationship to Rules Files
 
 | System | Format | Origin |
