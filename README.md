@@ -94,6 +94,28 @@ See [SPEC.md](SPEC.md) for the full format specification, including validation r
 - [AGENTS.md](https://agents.md/) — Universal instruction file spec (Linux Foundation)
 - [Claude Code Auto Memory](https://docs.anthropic.com/en/docs/claude-code) — Machine-local memory system that inspired this convention
 
+## Install
+
+### Quick install (prebuilt binary)
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/btakita/agent-memories/main/install.sh | sh
+```
+
+### Cargo
+
+```bash
+cargo install agent-memories
+```
+
+### From source
+
+```bash
+git clone https://github.com/btakita/agent-memories.git
+cd agent-memories
+cargo install --path .
+```
+
 ## License
 
 [CC0 1.0](LICENSE) — Public domain. Use this convention however you like.
