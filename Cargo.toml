@@ -1,0 +1,20 @@
+[package]
+name = "agent-memories"
+version = "0.1.0"
+edition = "2024"
+description = "Convention and validation for committed AI agent memories"
+license = "CC0-1.0"
+repository = "https://github.com/btakita/agent-memories"
+
+[dependencies]
+agent-kit = { version = "0.3", optional = true }
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+regex = "1"
+
+[dev-dependencies]
+tempfile = "3"
+
+[features]
+default = []
+detect = ["agent-kit"]
