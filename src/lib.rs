@@ -1,6 +1,10 @@
+pub mod write;
+
 use regex::Regex;
 use std::fmt;
 use std::str::FromStr;
+
+pub use write::write_memory;
 
 /// Memory type categories.
 #[derive(Debug, Clone, PartialEq, Eq)]
